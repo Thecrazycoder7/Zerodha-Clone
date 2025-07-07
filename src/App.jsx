@@ -1,16 +1,10 @@
-import { useState } from 'react'
+import HomePage from './landing_page/home/HomePage'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1>Welcome to Zerodha Clone</h1>
-      <p>Your one-stop solution for trading</p>
-      <button onClick={() => setCount((count) => count + 1)}>
-        Count is {count}
-      </button>
+      <HomePage />
     </>
   )
 }
