@@ -3,7 +3,7 @@ import React from "react";
 function Hero() {
   return (
     <div className="container">
-      <div className="row p-5 mt-5 border-bottom text-center">
+      <div className="row p-5  border-bottom text-center">
         <h1>Pricing</h1>
         <h3 className="text-muted mt-3 fs-5">
           Free equity investments and flat ₹20 traday and F&O trades
