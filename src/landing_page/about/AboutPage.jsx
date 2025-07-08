@@ -9,7 +9,6 @@ const AboutPage = () => {
     <>
         <Hero />
         <Team />
-        <Footer />
     </>
   )
 }
