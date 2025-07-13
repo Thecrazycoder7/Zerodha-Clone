@@ -11,6 +11,8 @@ import NotFound from './landing_page/NotFound'
 import NavBar from './landing_page/NavBar'
 import Footer from './landing_page/Footer'
 
+import './App.css'; 
+
 function App() {
   return (
     <>
