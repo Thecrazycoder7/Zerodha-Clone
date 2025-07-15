@@ -1,12 +1,12 @@
 import React from 'react'
 import TopBar from './TopBar'
-import DashBoard from './DashBoard'
+import Dashboard from './Dashboard'
 
 const Home = () => {
   return (
     <>
       <TopBar />
-      <DashBoard />
+      <Dashboard />
     </>
   )
 }

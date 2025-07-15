@@ -33,6 +33,10 @@ code {
   overflow-y: auto;
   padding: 3% 2%;
 }
+.itemInfo {
+  gap: 10px; /* add some gap */
+}
+
 
 .funds {
   width: 100%;
@@ -720,14 +724,14 @@ hr {
 }
 
 .actions {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
-  display: none;
 }
 
 .actions span button {
@@ -735,7 +739,7 @@ hr {
   height: 30px;
   border-radius: 4px;
   text-align: center;
-  margin-right: 8px;
+  margin-right: 4px;
   cursor: pointer;
 }
 
@@ -809,6 +813,10 @@ hr {
 }
 
 /* sudo selectors */
+.search {
+  color: rgb(70, 70, 70); /* dark text */
+}
+
 .search:focus {
   outline: none;
 }
@@ -816,6 +824,13 @@ hr {
 .list li:hover {
   cursor: move;
   background-color: #f3f3f3;
+}
+.actions {
+  position: absolute; /* uncomment */
+  right: 10px;
+}
+.list li {
+  position: relative;
 }
 
 .list li:hover > .actions {
@@ -849,3 +864,103 @@ hr {
 }
 
 
+/* css for buyaction window */
+
+#buy-window {
+  width: 400px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  z-index: 10;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  box-sizing: border-box;
+}
+
+.regular-order {
+  margin-bottom: 20px;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  flex: 1;
+}
+
+legend {
+  font-size: 0.9rem;
+  color: #666;
+  padding: 0 6px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+input[type="number"]:focus {
+  border-color: #4184f3;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.buttons span {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.buttons div {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+}
+
+.btn-blue {
+  background-color: #4184f3;
+}
+
+.btn-blue:hover {
+  background-color: #74a7fa;
+}
+
+.btn-grey {
+  background-color: #999;
+}
+
+.btn-grey:hover {
+  background-color: #bbb;
+}
