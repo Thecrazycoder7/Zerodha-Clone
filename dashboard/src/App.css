@@ -40,10 +40,12 @@ code {
 
 .funds {
   width: 100%;
-  text-align: right;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between; /* instead of flex-end */
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
 }
 
 .funds p {
@@ -53,12 +55,11 @@ code {
 }
 
 .btn {
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 2px;
-  color: #fff;
-  margin-right: 2px;
-  margin-left: 2px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  margin: 4px;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 
 .btn-green {
@@ -104,7 +105,11 @@ code {
 
 .table {
   border: 1px solid #ddd;
-  padding: 5% 8%;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
+
 }
 
 .table .data {
@@ -139,8 +144,11 @@ code {
 }
 
 .commodity {
-  padding: 2% 8%;
+  border: 1px dashed #ccc;
+  padding: 20px;
   text-align: center;
+  background-color: #fafafa;
+  border-radius: 6px;
 }
 
 .commodity p {
@@ -963,4 +971,33 @@ input[type="number"]:focus {
 
 .btn-grey:hover {
   background-color: #bbb;
+}
+
+/* orders css  */
+
+.order-table {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.order-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.profit {
+  color: green;
+  font-weight: 600;
+}
+
+.loss {
+  color: red;
+  font-weight: 600;
 }

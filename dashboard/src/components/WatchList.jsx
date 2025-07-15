@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 
 import GeneralContext from "./GeneralContext";
+import SellActionWindow from "./SellActionWindow";
 
 import { Tooltip, Grow } from "@mui/material";
 
@@ -136,6 +137,11 @@ const WatchListActions = ({ uid }) => {
     generalContext.openBuyWindow(uid);
   };
 
+  const handleSellClick = () => {
+    generalContext.openSellWindow(uid);
+  };
+
+
   return (
     <span className="actions">
       <span>
@@ -155,6 +161,7 @@ const WatchListActions = ({ uid }) => {
           arrow
           slots={{ transition: Grow }}
           slotProps={{ transition: { timeout: 500 } }}
+          onClick={handleSellClick}
         >
           <button className="sell">Sell</button>
         </Tooltip>

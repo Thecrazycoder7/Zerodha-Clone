@@ -3,10 +3,10 @@ const { Schema } = require("mongoose");
 const OrdersSchema = new Schema({
   name: String,
   qty: Number,
-  avg: Number,
   price: Number,
-  net: String,
-  day: String,
+  mode: String,
 });
+
+OrdersSchema.index({ name: 1, mode: 1 }, { unique: true });
 
 module.exports = { OrdersSchema };
