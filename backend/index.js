@@ -4,18 +4,38 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser")
 
 const { HoldingsModel } = require('./models/HoldingsModel'); 
 const { PositionsModel } = require('./models/PositionsModel'); 
 const { OrdersModel } = require('./models/OrdersModel'); 
+const AuthRoute = require('./AuthRoute')
 
 const port = process.env.PORT || 3001;
 const uri = process.env.MONGODB_URI;
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+
+
+app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(express.json())
 
 // app.get('/addHoldings', async(req, res) => {
 //   let tempHoldings = [
@@ -256,17 +276,22 @@ app.use(bodyParser.json());
     }
   });
 
-
   app.get('/allOrders', async (req, res) => {
     let allOrders = await OrdersModel.find({});
     res.send(allOrders);
   });
 
+  // user signup signin route
+  app.use("/", AuthRoute);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 
-  mongoose.connect(uri);
-  console.log(`Connected to MongoDB!`);
-
-});
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+    
+    mongoose
+      .connect(uri)
+      .then(() => console.log("Connected to MongoDB!"))
+      .catch((err) => console.error("MongoDB connection error:", err));
+    
+  });
+  
