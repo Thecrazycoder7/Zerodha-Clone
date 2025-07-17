@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route} from'react-router-dom';
 
 import HomePage from './landing_page/home/HomePage'
 import SignupPage from './landing_page/signup/SignupPage'
+import Login from './landing_page/login';
 import AboutPage from './landing_page/about/AboutPage'
 import ProductPage from './landing_page/products/ProductPage'
 import PricingPage from './landing_page/pricing/PricingPage'
@@ -12,7 +13,6 @@ import NavBar from './landing_page/NavBar'
 import Footer from './landing_page/Footer'
 
 import './App.css'; 
-import Login from './landing_page/Login';
 
 import "react-toastify/dist/ReactToastify.css";
 

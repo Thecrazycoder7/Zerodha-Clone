@@ -1,6 +1,6 @@
 import React from 'react'
 import Hero from './Hero'
-import Signup from '../Login'
+import Signup from './Signup'
 import InvestmentType from './InvestmentType'
 import Steps from './Steps'
 import Benefits from './Benefits'

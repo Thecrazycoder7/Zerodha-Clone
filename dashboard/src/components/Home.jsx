@@ -1,30 +1,49 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import TopBar from "./TopBar";
 import Dashboard from "./Dashboard";
 
 const Home = () => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
   useEffect(() => {
-    axios
-      .post("http://localhost:3000/", {}, { withCredentials: true })
-      .then((res) => {
-        if (res.data.status) {
-          setUser(res.data.success);
-        } else {
-          navigate("http://localhost:5174/login"); // go back to login
-        }
-      })
-      .catch(() => navigate("http://localhost:5173"));
+    console.log("🏁 Home mounted");
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const userString = queryParams.get("user");
+
+    if (userString) {
+      console.log("✅ Got user from URL");
+
+      const userObj = JSON.parse(decodeURIComponent(userString));
+      setUser(userObj);
+
+      // Save user in localStorage
+      localStorage.setItem("user", JSON.stringify(userObj));
+
+      // Clean the URL (don't reload!)
+      window.history.replaceState({}, document.title, "/");
+    } else {
+      console.log("🟡 No user in URL, checking localStorage...");
+
+      const savedUser = localStorage.getItem("user");
+
+      if (savedUser) {
+        console.log("✅ Got user from localStorage");
+        setUser(JSON.parse(savedUser));
+      } else {
+        console.log("❌ No user found, redirecting to login...");
+        window.location.href = "http://localhost:5173/login";
+      }
+    }
   }, []);
+
+
+  if (!user) return <p style={{ textAlign: "center" }}>Loading...</p>;
 
   return (
     <>
       <TopBar />
-      <Dashboard />
+      <Dashboard user={user} />
     </>
   );
 };

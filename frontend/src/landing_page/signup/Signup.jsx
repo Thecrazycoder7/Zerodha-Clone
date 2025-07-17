@@ -24,7 +24,7 @@ const Signup = () => {
 
   const handleSuccess = (msg) =>
     toast.success(msg, {
-      position: "bottom-right",
+      position: "top-right",
     });
 
   const handleError = (msg) => {
@@ -35,24 +35,34 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!name || !username || !email || !password) {
+      handleError("Please fill all fields");
+      return;
+    }
+
     try {
       const { data } = await axios.post(
         "http://localhost:3000/signup",
         inputValue,
         { withCredentials: true }
       );
+
       const { success, message } = data;
+
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "http://localhost:5174/";
+          navigate("/login");
         }, 1000);
       } else {
         handleError(message);
       }
     } catch (error) {
-      console.log(error);
+      console.error("Signup Error:", error.response?.data || error.message);
+      handleError("Signup failed");
     }
+
     setInputValue({
       name: "",
       username: "",
@@ -60,6 +70,7 @@ const Signup = () => {
       password: "",
     });
   };
+
 
   return (
     <div className="container">

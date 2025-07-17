@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
@@ -22,7 +21,7 @@ const Login = () => {
 
   const handleSuccess = (msg) =>
     toast.success(msg, {
-      position: "bottom-right",
+      position: "top-right",
     });
 
   const handleError = (msg) =>
@@ -42,14 +41,14 @@ const Login = () => {
       const { success, message } = data;
       if (success) {
         handleSuccess(message);
-        setTimeout(() => {
-          window.location.href = "http://localhost:5174/"; // redirect to dashboard
-        }, 1000);
+        const userString = encodeURIComponent(JSON.stringify(data.user));
+        window.location.href = `http://localhost:5174?user=${userString}`;
       } else {
         handleError(message);
       }
     } catch (error) {
-      console.log(error);
+      console.log("Login failed:", error.response?.data || error.message);
+      handleError("Login failed"); 
     }
 
     setInputValue({
