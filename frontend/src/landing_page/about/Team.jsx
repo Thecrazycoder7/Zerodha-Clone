@@ -18,7 +18,7 @@ const Team = () => {
             alt="Team Member"
           />
           <h4 className="mt-5">Sumana Kumari</h4>
-          <h6>Founder & CEO</h6>
+          <h6>Developer</h6>
         </div>
         <div className="col-6 p-3">
           <p>
