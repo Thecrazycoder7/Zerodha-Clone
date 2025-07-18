@@ -42,7 +42,7 @@ const Home = () => {
 
   return (
     <>
-      <TopBar />
+      <TopBar user={user} />
       <Dashboard user={user} />
     </>
   );
